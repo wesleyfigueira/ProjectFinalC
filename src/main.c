@@ -12,17 +12,30 @@
 #include "timer.h"
 
 int x = 34, y = 12;
+int pontuacao = 0;
+int x_paddle = MAXX*0.5, y_paddle = MAXY*0.9;
 int incX = 1, incY = 1;
+
+void printPaddle(int nextX) {
+    screenSetColor(CYAN, DARKGRAY);
+    
+    screenGotoxy(x_paddle, y_paddle);
+    printf("     ");
+
+    x_paddle = nextX;
+    screenGotoxy(x_paddle, y_paddle);
+    printf("=====");
+}
 
 void printHello(int nextX, int nextY)
 {
     screenSetColor(CYAN, DARKGRAY);
     screenGotoxy(x, y);
-    printf("           ");
+    printf(" ");
     x = nextX;
     y = nextY;
     screenGotoxy(x, y);
-    printf("Hello World");
+    printf("O");
 }
 
 void printKey(int ch)
@@ -44,6 +57,18 @@ void printKey(int ch)
     }
 }
 
+void printPontuacao()
+{
+    screenSetColor(YELLOW, DARKGRAY);
+    screenGotoxy(0, 0);
+    printf("Pontuação: ");
+
+    screenGotoxy(12, 0);
+    printf(" ");
+    screenGotoxy(12, 0);
+    printf("%d ", pontuacao);
+}
+
 int main() 
 {
     static int ch = 0;
@@ -56,13 +81,27 @@ int main()
     printHello(x, y);
     screenUpdate();
 
-    while (ch != 10 && timer <= 100) //enter or 5s
+    while (ch != 10) //enter or 5s
     {
         // Handle user input
         if (keyhit()) 
         {
             ch = readch();
             printKey(ch);
+
+            switch (ch)
+            {
+                case 97:
+                    if (x_paddle - 1 > MINX)
+                        printPaddle(x_paddle-1);
+                    break;
+                case 100:
+                    if (x_paddle + strlen("=====") + 1 < MAXX)
+                        printPaddle(x_paddle+1);
+                    break;
+
+            }
+
             screenUpdate();
         }
 
@@ -70,12 +109,21 @@ int main()
         if (timerTimeOver() == 1)
         {
             int newX = x + incX;
-            if (newX >= (MAXX -strlen("Hello World") -1) || newX <= MINX+1) incX = -incX;
+            if (newX >= (MAXX -strlen("O") -1) || newX <= MINX+1) incX = -incX;
             int newY = y + incY;
             if (newY >= MAXY-1 || newY <= MINY+1) incY = -incY;
 
-            printHello(newX, newY);
+            if ( (newX >= x_paddle && newX <= x_paddle + strlen("=====") )
+                && (newY >= y_paddle && newY <= y_paddle + 1)) {
+                // incX *= -1;
+                pontuacao++;
+                incY *= -1;
+            }
+        
 
+            printHello(newX, newY);
+            printPaddle(x_paddle);
+            printPontuacao();
             screenUpdate();
             timer++;
         }
