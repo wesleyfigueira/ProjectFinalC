@@ -35,7 +35,7 @@ void printHello(int nextX, int nextY)
     x = nextX;
     y = nextY;
     screenGotoxy(x, y);
-    printf("O");
+    printf("9");
 }
 
 void printKey(int ch)
@@ -76,7 +76,7 @@ int main()
 
     screenInit(1);
     keyboardInit();
-    timerInit(50);
+    timerInit(100);
 
     printHello(x, y);
     screenUpdate();
