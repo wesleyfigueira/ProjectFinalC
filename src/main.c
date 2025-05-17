@@ -27,16 +27,7 @@ void printPaddle(int nextX) {
     printf("=====");
 }
 
-void printHello(int nextX, int nextY)
-{
-    screenSetColor(CYAN, DARKGRAY);
-    screenGotoxy(x, y);
-    printf(" ");
-    x = nextX;
-    y = nextY;
-    screenGotoxy(x, y);
-    printf("9");
-}
+
 
 void printKey(int ch)
 {
