@@ -34,7 +34,7 @@ void inicializarCobra(Posicao *cobra, int *tamanho) {
 
 // Gera uma nova posição para a comida
 void gerarComida(Posicao *comida) {
-    comida->x = MINX + 2 + (rand() % (MAXX - MINX - 4));
+    comida->x = MINX + 1 + (rand() % (MAXX - MINX - 4));
     comida->y = MINY + 2 + (rand() % (MAXY - MINY - 4));
 }
 
@@ -43,7 +43,7 @@ void exibirCobra(Posicao *cobra, int tamanho) {
     screenSetColor(GREEN, DARKGRAY);
     for (int i = 0; i < tamanho; i++) {
         screenGotoxy(cobra[i].x, cobra[i].y);
-        printf("*");
+        printf("●");
     }
 }
 
@@ -60,7 +60,7 @@ void limparCobra(Posicao *cobra, int tamanho) {
 void exibirComida(Posicao *comida) {
     screenSetColor(RED, DARKGRAY);
     screenGotoxy(comida->x, comida->y);
-    printf("L");
+    printf("🍎");
 }
 
 // Exibe a pontuação
