@@ -91,6 +91,7 @@ void atualizarCobra(Posicao *cobra, int *tamanho, int *direcao, Posicao *comida,
 
     switch (*direcao) {
 
+        case 72: cobra[0].y--;
         break; // Cima
         case 75: cobra[0].x--; 
         break; // Esquerda
@@ -168,6 +169,8 @@ int main() {
     screenGotoxy(MAXX / 2 - 7, MAXY / 2 + 1);
     printf("Pontuação Final: %d", tamanho_cobra - 3);
     screenUpdate();
+    getchar(); 
+
 
     keyboardDestroy();
     screenDestroy();
