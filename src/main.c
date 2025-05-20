@@ -67,18 +67,21 @@ void exibirComida(Posicao *comida) {
 void exibirPontuacao(int tamanho) {
     screenSetColor(YELLOW, DARKGRAY);
     screenGotoxy(0, 0);
-    sprintf(pontuacao_atual.texto, "%d", tamanho - 5);
+    sprintf(pontuacao_atual.texto, "%d", tamanho - 3);
     printf("Pontuação: %s", pontuacao_atual.texto);
 }
 
 // Atualiza a velocidade conforme a cobra cresce
 void atualizarVelocidade(int tamanho_atual) {
     int novo_intervalo = 150 - (tamanho_atual - 3) * 5;
+
+    
+
     if (novo_intervalo < 50) {
         novo_intervalo = 50;
     }
     timerInit(novo_intervalo);
-}
+};
 
 // Atualiza a posição da cobra, verifica colisões e comida
 void atualizarCobra(Posicao *cobra, int *tamanho, int *direcao, Posicao *comida, int *jogo_encerrado) {
@@ -87,10 +90,14 @@ void atualizarCobra(Posicao *cobra, int *tamanho, int *direcao, Posicao *comida,
     }
 
     switch (*direcao) {
-        case 72: cobra[0].y--; break; // Cima
-        case 75: cobra[0].x--; break; // Esquerda
-        case 80: cobra[0].y++; break; // Baixo
-        case 77: cobra[0].x++; break; // Direita
+
+        break; // Cima
+        case 75: cobra[0].x--; 
+        break; // Esquerda
+        case 80: cobra[0].y++; 
+        break; // Baixo
+        case 77: cobra[0].x++; 
+        break; // Direita
     }
 
     // Colisão com bordas
@@ -106,7 +113,7 @@ void atualizarCobra(Posicao *cobra, int *tamanho, int *direcao, Posicao *comida,
     }
 
     // Comeu a comida
-    if (cobra[0].x == comida->x && cobra[0].y == comida->y) {
+    if (abs(cobra[0].x - comida->x) <= 1 && cobra[0].y == comida->y) {
         if (*tamanho < TAMANHO_MAX_COBRA) {
             (*tamanho)++;
         }
