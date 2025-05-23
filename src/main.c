@@ -68,7 +68,7 @@ void exibirPontuacao(int tamanho) {
     screenSetColor(YELLOW, DARKGRAY);
     screenGotoxy(0, 0);
     sprintf(pontuacao_atual.texto, "%d", tamanho - 3);
-    printf("Pontuação: %s", pontuacao_atual.texto);
+    printf("Pontuação:| %s |", pontuacao_atual.texto);
 }
 
 // Atualiza a velocidade conforme a cobra cresce
@@ -164,7 +164,7 @@ int main() {
 
     // Fim de jogo
     screenSetColor(RED, DARKGRAY);
-    screenGotoxy(MAXX / 2 - 5, MAXY / 2);
+    screenGotoxy(MAXX / 2 - 7, MAXY / 2);
     printf("FIM DE JOGO!");
     screenGotoxy(MAXX / 2 - 7, MAXY / 2 + 1);
     printf("Pontuação Final: %d", tamanho_cobra - 3);
