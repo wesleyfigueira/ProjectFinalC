@@ -34,7 +34,7 @@ void inicializarCobra(Posicao *cobra, int *tamanho) {
 
 // Gera uma nova posição para a comida
 void gerarComida(Posicao *comida) {
-    comida->x = MINX + 1 + (rand() % (MAXX - MINX - 4));
+    comida->x = MINX + 2 + (rand() % (MAXX - MINX - 4));
     comida->y = MINY + 2 + (rand() % (MAXY - MINY - 4));
 }
 
