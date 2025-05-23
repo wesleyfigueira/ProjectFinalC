@@ -58,7 +58,6 @@ void limparCobra(Posicao *cobra, int tamanho) {
 
 // Exibe a comida
 void exibirComida(Posicao *comida) {
-    screenSetColor(RED, DARKGRAY);
     screenGotoxy(comida->x, comida->y);
     printf("🍎");
 }
