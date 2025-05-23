@@ -52,6 +52,7 @@ github/
 ## Nome dos Membros e GitHub: 
 
 Allan D'Avila Souza Filho (@allandavilafilho)
+Deyvison Gabriel Guerra Lucas (@dgabrielguerra)
 Fábio Gomes dos Reis (@fabiogreis15)
 Victor Gabriel Figueira dos Santos (@FIGU3IR4)
 Wesley Wandelson Figueira dos Santos (wesleyfigueira)
